@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  width: 150px;
+  border: none;
+  background-color: lightgoldenrodyellow;
+}
+
+input:focus {
+  height: auto;
+  outline: none;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+.map {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+  text-align: center;
+  background-color: #f4f4f4;
+  margin-bottom: 20px;
+}
+
+.map h4 {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  width: 100%;
+  transform: translateX(-50%);
+}
+
+.map p {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  width: 100%;
+  transform: translateX(-50%);
+}
+
+.map span {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.container {
+  padding: 20px;
+}
+
+.file-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  width: 250px;
+  margin-bottom: 10px;
+ }
+
+.file-container p {
+  line-height: 29px;
+}
+
+.file-container label {
+  color: #fff;
+  background-color: gray;
+  border-radius: 2px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.file-container input {
+  display: none;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+  background-color: lightgoldenrodyellow;
+  padding: 10px;
+}
+
+.input-container label {
+  position: relative;
+  top: 1px;
+  font-size: 14px;
+  font-weight: 600;
+}
