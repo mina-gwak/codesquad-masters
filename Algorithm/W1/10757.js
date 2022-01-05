@@ -11,13 +11,8 @@ let maxLength = Math.max(numA.length, numB.length);
 
 const decAdder = (numA = 0, numB = 0) => {
   const sum = parseInt(numA) + parseInt(numB) + prevCarry;
-  if (sum >= 10) {
-    prevCarry = 1;
-    result.push(sum - 10);
-  } else {
-    prevCarry = 0;
-    result.push(sum);
-  }
+  prevCarry = sum >= 10 ? 1 : 0;
+  result.push(sum >= 10 ? sum - 10 : sum);
 };
 
 for (let i = 0; i < maxLength; i++) {

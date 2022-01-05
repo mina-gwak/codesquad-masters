@@ -23,9 +23,7 @@ const dec2bin = (dec) => {
 const binInput = dec2bin(input);
 
 for (let i = 0; i < binInput.length; i++) {
-  const check = (!binInput[i] && prevCarry) || (binInput[i] && !prevCarry);
-
-  if (addCount !== 0 && check) count++;
+  if (!binInput[i] && prevCarry) count++;
   if (count <= parseInt(min)) {
     console.log(addCount);
     break;
@@ -33,7 +31,7 @@ for (let i = 0; i < binInput.length; i++) {
 
   if (!binInput[i] && !prevCarry) prevCarry = 0;
   else {
-    if (check) addCount += 2 ** i;
+    if ((!binInput[i] && prevCarry) || (binInput[i] && !prevCarry)) addCount += 2 ** i;
     binInput[i] = 0;
     prevCarry = 1;
     count--;
