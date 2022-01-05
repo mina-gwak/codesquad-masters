@@ -1,5 +1,5 @@
 let fs = require('fs');
-let [n, ...arr] = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
+let [n, ...arr] = fs.readFileSync('input.txt').toString().trim().split('\n');
 
 for (let i = 0; i < arr.length; i++) {
   let [base, exponent] = arr[i].split(' ');
