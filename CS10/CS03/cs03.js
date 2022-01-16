@@ -21,7 +21,7 @@ for (let idx = 1; idx < 14; idx++) {
 
 // Mission 2
 
-let head;
+let head = null;
 
 const checkCommand = (command, index) => {
   let isCommandValid = true;
@@ -38,8 +38,7 @@ const isVideoExist = (id) => {
   return videos.some(video => video.id === id);
 };
 
-const printVideos = (tempHead = head) => {
-  head = tempHead;
+const printVideos = () => {
   let cur = head;
   let toBePrinted = '|';
 
@@ -55,7 +54,7 @@ const printVideos = (tempHead = head) => {
 const addVideo = (id) => {
   let toBeAdded = { ...videos.find(video => video.id === id) };
 
-  if (head == null) head = toBeAdded;
+  if (!head) head = toBeAdded;
 
   else {
     let cur = head;
@@ -80,11 +79,10 @@ const addVideo = (id) => {
 const insertVideo = (id, index) => {
   let toBeInserted = { ...videos.find(video => video.id === id) };
 
-  if (head == null) head = toBeInserted;
+  if (!head) head = toBeInserted;
 
   else {
     let cur = head; // 순회할 때 사용하는 요소, 첫 요소인 head를 넣어줌
-    let tempHead = cur; // 현재 리스트의 head 요소, 이후 원래 head의 값에 대입될 값
     let count = 0;
 
     while (cur) {
@@ -97,10 +95,9 @@ const insertVideo = (id, index) => {
 
       // head 자리에 요소를 삽입할 때
       if (parseInt(index) === 0) {
-        let temp = { ...tempHead };
-        tempHead = toBeInserted;
-        tempHead.next = temp;
-        printVideos(tempHead);
+        toBeInserted.next = cur;
+        head = toBeInserted;
+        printVideos();
         return;
       }
 
@@ -108,14 +105,14 @@ const insertVideo = (id, index) => {
       else if (count === parseInt(index) - 1) {
         toBeInserted.next = cur.next;
         cur.next = toBeInserted;
-        printVideos(tempHead);
+        printVideos();
         return;
       }
 
       // 입력된 인덱스가 배열의 크기보다 커서 마지막 요소까지 왔을 때
       else if (cur.next === null) {
         cur.next = toBeInserted;
-        printVideos(tempHead);
+        printVideos();
         return;
       }
 
@@ -130,21 +127,20 @@ const insertVideo = (id, index) => {
 
 const deleteVideo = (id) => {
   let cur = head; // 순회할 때 사용하는 요소, 첫 요소인 head를 넣어줌
-  let tempHead = cur; // 현재 리스트의 head 요소, 이후 원래 head의 값에 대입될 값
 
   while (cur) {
 
     // 삭제할 요소가 head일 때
     if (cur.id === id) {
-      tempHead = cur.next;
-      printVideos(tempHead);
+      head = cur.next;
+      printVideos();
       return;
     }
 
     // 중간에 있는 요소를 삭제할 때
     else if (cur.next.id === id) {
       cur.next = cur.next.next;
-      printVideos(tempHead);
+      printVideos();
       return;
     }
 
